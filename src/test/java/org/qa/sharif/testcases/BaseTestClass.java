@@ -14,7 +14,7 @@ public class BaseTestClass {
 
     @BeforeClass
     public void init(){
-         driver = DriverProvider.initiateDriver();
+         driver = DriverProvider.getDriver();
          driver.get(baseUrl);
     }
 
@@ -31,7 +31,7 @@ public class BaseTestClass {
     @AfterClass
     public void exit(){
 
-        DriverProvider.quitDriver();
+       // DriverProvider.quitDriver();
     }
 
 }

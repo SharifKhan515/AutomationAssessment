@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class DriverProvider {
 
     private static WebDriver driver;
-    public static WebDriver initiateDriver(){
+    public static WebDriver getDriver(){
         String browser = null;
         if(System.getProperty("browser")==null){
             browser = AppConfig.getDefaultBrowser();
@@ -31,9 +31,9 @@ public class DriverProvider {
                 throw  new IllegalArgumentException(browser +" is not currently covered by automation");
             }
 
-            driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-            driver.manage().timeouts().setScriptTimeout(50, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(AppConfig.getDefaultPageTimeout(), TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(AppConfig.getDefaultElementTimeOut(), TimeUnit.SECONDS);
+            driver.manage().timeouts().setScriptTimeout(AppConfig.getDefaultScriptTimeout(), TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
 
