@@ -4,20 +4,20 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.qa.sharif.commonutils.AppConfig;
 
 import java.util.concurrent.TimeUnit;
 
 public class DriverProvider {
 
     private static WebDriver driver;
-
-
     public static WebDriver initiateDriver(){
         String browser = null;
         if(System.getProperty("browser")==null){
-
+            browser = AppConfig.getDefaultBrowser();
         }else{
             browser = System.getProperty("browser");
+
         }
 
         if(driver==null){
