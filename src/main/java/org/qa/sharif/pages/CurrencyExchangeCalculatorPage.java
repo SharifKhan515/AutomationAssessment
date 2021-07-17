@@ -1,4 +1,4 @@
-package org.paysera.sharif.pages;
+package org.qa.sharif.pages;
 
 public class CurrencyExchangeCalculatorPage {
 }
