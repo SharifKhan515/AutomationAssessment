@@ -18,13 +18,8 @@ public class PropertyHelper {
         try {
             properties = new Properties();
             inputStream = new FileInputStream(propFileName);
+            properties.load(inputStream);
 
-            if (inputStream != null) {
-                properties.load(inputStream);
-
-            } else {
-                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-            }
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         } finally {
@@ -36,9 +31,9 @@ public class PropertyHelper {
         }
     }
 
-    public String getPropertyValue(String propName){
+    public String getPropertyValue(String propName) {
         String propValue = properties.getProperty(propName);
-        if(propValue!=null) return propValue;
+        if (propValue != null) return propValue;
         else throw new RuntimeException(propName + " not found at " + propFileName);
     }
 

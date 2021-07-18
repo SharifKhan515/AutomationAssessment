@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Currency exchange calculator test Suite ">
+    <!--<listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>-->
     <test verbose="2" name="Currency exchange calculator test">
         <classes>
-            <class name="org.qa.sharif.testcases.AutoEmptyFileTest"/>
+            <class name="org.qa.sharif.testcases.AutoEmptyFieldTest"/>
+            <class name="org.qa.sharif.testcases.CountryCurrencyUpdateTest"/>
         </classes>
     </test>
 </suite>

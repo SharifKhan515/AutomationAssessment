@@ -11,24 +11,24 @@ import java.util.concurrent.TimeUnit;
 public class DriverProvider {
 
     private static WebDriver driver;
-    public static WebDriver getDriver(){
-        String browser = null;
-        if(System.getProperty("browser")==null){
-            browser = AppConfig.getDefaultBrowser();
-        }else{
-            browser = System.getProperty("browser");
 
+    public static WebDriver getDriver() {
+        String browser;
+        if (System.getProperty("browser") == null) {
+            browser = AppConfig.getDefaultBrowser();
+        } else {
+            browser = System.getProperty("browser");
         }
 
-        if(driver==null){
-            if(browser.equalsIgnoreCase("CHROME")){
+        if (driver == null) {
+            if (browser.equalsIgnoreCase("CHROME")) {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
-            }else if(browser.equalsIgnoreCase("FIREFOX")){
+            } else if (browser.equalsIgnoreCase("FIREFOX")) {
                 WebDriverManager.firefoxdriver().setup();
-                driver= new FirefoxDriver();
+                driver = new FirefoxDriver();
             } else {
-                throw  new IllegalArgumentException(browser +" is not currently covered by automation");
+                throw new IllegalArgumentException(browser + " is not currently covered by automation");
             }
 
             driver.manage().timeouts().pageLoadTimeout(AppConfig.getDefaultPageTimeout(), TimeUnit.SECONDS);
@@ -40,10 +40,10 @@ public class DriverProvider {
         return driver;
     }
 
-    public static void quitDriver(){
-        if(driver!=null){
+    public static void quitDriver() {
+        if (driver != null) {
             driver.quit();
-            driver=null;
+            driver = null;
         }
     }
 }
