@@ -5,10 +5,20 @@
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>-->
-    <test verbose="2" name="Currency exchange calculator test">
+    <test verbose="2" name="Sell filed empty by Buy filed value and vice-varse tes">
         <classes>
             <class name="org.qa.sharif.testcases.AutoEmptyFieldTest"/>
+        </classes>
+    </test>
+    <test verbose="2" name="Currency and currency rate is updating with country test">
+        <classes>
             <class name="org.qa.sharif.testcases.CurrencyUpdateTest"/>
+        </classes>
+    </test>
+
+    <test verbose="2" name="Currency exchange loss text prsent test">
+        <classes>
+            <class name="org.qa.sharif.testcases.CurrencyLossTest"/>
         </classes>
     </test>
 </suite>

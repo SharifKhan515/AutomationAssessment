@@ -4,13 +4,11 @@ import org.qa.sharif.dataproviders.CountryData;
 import org.qa.sharif.dataproviders.ReadData;
 import org.qa.sharif.pageobjectrepisotory.CurrencyExchangeCalculatorPage;
 import org.qa.sharif.pageobjectrepisotory.CurrencyTable;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class CurrencyUpdateTest extends BaseTestClass {
-
 
     @BeforeClass
     public void createCurrencyPage() {
@@ -18,7 +16,6 @@ public class CurrencyUpdateTest extends BaseTestClass {
         currencyTable = new CurrencyTable();
         softVerify = new SoftAssert();
     }
-
 
     @Test(dataProvider = "CountryCurrencyUpdateTest", dataProviderClass = ReadData.class)
     public void verify_Currency_Update_With_Selected_Country(String firstCountry, String secondCountry) {
@@ -33,8 +30,6 @@ public class CurrencyUpdateTest extends BaseTestClass {
         officialRateOfSecondCurrency = currencyTable.getOfficialExchangeRateByCurrency(CountryData.USA.getCurrency());
 
         softVerify.assertNotEquals(officialRateOfFirstCurrency, officialRateOfSecondCurrency, "Currency rate not updated");
-
         softVerify.assertAll();
-
     }
 }

@@ -35,22 +35,22 @@ public class CurrencyLossTest extends BaseTestClass {
 
         Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("SWEDBANK", compareCurrency)),
                 df.format(currencyTable.getOtherBankLoss("SWEDBANK", compareCurrency)),
-                "Calculated loss is not matched with Website loss"
+                "Calculated loss is not matched with Website loss for SWEDBANK"
         );
 
-        Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("SWEDBANK", compareCurrency)),
+        Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("SEB", compareCurrency)),
                 df.format(currencyTable.getOtherBankLoss("SEB", compareCurrency)),
-                "Calculated loss is not matched with Website loss"
+                "Calculated loss is not matched with Website loss for SEB"
         );
 
         Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("CITADELE", compareCurrency)),
-                df.format(currencyTable.getOtherBankLoss("SWEDBANK", compareCurrency)),
-                "Calculated loss is not matched with Website loss"
+                df.format(currencyTable.getOtherBankLoss("CITADELE", compareCurrency)),
+                "Calculated loss is not matched with Website loss for CITADELE"
         );
 
         Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("LUMINOR", compareCurrency)),
-                df.format(currencyTable.getOtherBankLoss("SWEDBANK", compareCurrency)),
-                "Calculated loss is not matched with Website loss"
+                df.format(currencyTable.getOtherBankLoss("LUMINOR", compareCurrency)),
+                "Calculated loss is not matched with Website loss for LUMINOR"
         );
         softVerify.assertAll();
     }

@@ -34,7 +34,7 @@ public class AutoEmptyFieldTest extends BaseTestClass {
     public void Verify_Sell_Amount_Empty_By_Buy_Amount(String message, String value) {
         currencyExchangeCalculatorPage.setSellAmount(value);
         currencyExchangeCalculatorPage.setBuyAmount(value);
-        Assert.assertEquals(currencyExchangeCalculatorPage.getSellAmount().isEmpty(), "Test failed for data type: " + message);
+        Assert.assertTrue(currencyExchangeCalculatorPage.getSellAmount().isEmpty(), "Test failed for data type: " + message);
     }
 
     @Test(dataProvider = "autoEmptyFileTest", dataProviderClass = ReadData.class)
@@ -48,7 +48,7 @@ public class AutoEmptyFieldTest extends BaseTestClass {
     public void Verify_Buy_Amount_Empty_By_Sell_Amount(String message, String value) {
         currencyExchangeCalculatorPage.setBuyAmount(value);
         currencyExchangeCalculatorPage.setSellAmount(value);
-        Assert.assertEquals(currencyExchangeCalculatorPage.getBuyAmount().isEmpty(), "Test failed for data type: " + message);
+        Assert.assertTrue(currencyExchangeCalculatorPage.getBuyAmount().isEmpty(), "Test failed for data type: " + message);
     }
 
 }
