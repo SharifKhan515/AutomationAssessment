@@ -1,8 +1,10 @@
 package org.qa.sharif.pageobjectrepisotory;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.qa.sharif.commonutils.DriverHelper;
+
 import java.util.List;
 
 
@@ -13,6 +15,8 @@ public class CurrencyExchangeCalculatorPage extends BasePage {
     private WebElement sellAmountField;
     @FindBy(xpath = "//div[@data-ng-model='currencyExchangeVM.filter.from']//span[@class='ng-binding ng-scope']")
     private WebElement sellAmountCurrencyField;
+    @FindBy(xpath = "//div[contains(@data-ng-model,'currencyExchangeVM.filter.from')]//ul//span[@data-ng-bind='currency']")
+    private List<WebElement> sellCurrencyList;
 
 
     // buy field related locator
@@ -22,10 +26,8 @@ public class CurrencyExchangeCalculatorPage extends BasePage {
     private WebElement buyAmountCurrencyField;
 
 
-    // Currency Table related locator when country is lithuania
-    @FindBy(xpath = "//tbody/tr[1]/td[1]")
-    private WebElement currencyExchangeTableFirstRow;
-
+    @FindBy(xpath = "//div[@data-ng-show='currencyExchangeVM.loading']")
+    private WebElement currencyExchangeTableLoader;
 
     //Country dropdown related locator
     @FindBy(xpath = "//span[@class='js-localization-popover']")
@@ -41,59 +43,78 @@ public class CurrencyExchangeCalculatorPage extends BasePage {
 
 
     public void clickOnSellAmount() {
-        DriverHelper.waitForPageLoad();
-        DriverHelper.scrollElementToView(sellAmountField);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(sellAmountField);
         sellAmountField.click();
     }
 
+    public void enterSellAmount(String amount) {
+        setSellAmount(amount);
+        sellAmountField.sendKeys(Keys.ENTER);
+        DriverHelper.waitForElementVisibility(currencyExchangeTableLoader);
+        DriverHelper.waitForElementBecomeInvisible(currencyExchangeTableLoader);
+    }
+
+    public void setSellCurrency(String currency) {
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(sellAmountCurrencyField);
+        sellAmountCurrencyField.click();
+        for (WebElement cr : sellCurrencyList) {
+            if (cr.getText().equalsIgnoreCase(currency)) {
+                cr.click();
+                break;
+            }
+        }
+    }
+    
     public void setSellAmount(String amount) {
-        DriverHelper.scrollElementToView(sellAmountField);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(sellAmountField);
         sellAmountField.clear();
         sellAmountField.sendKeys(amount);
     }
 
     public String getDefaultSellAmount() {
         DriverHelper.pageReload();
-        DriverHelper.waitForPageLoad();
-        DriverHelper.scrollElementToView(sellAmountField);
-        DriverHelper.waitForElementVisibility(currencyExchangeTableFirstRow);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(currencyExchangeTableLoader);
         return sellAmountField.getAttribute("value");
     }
 
     public String getSellAmount() {
-        DriverHelper.waitForPageLoad();
-        DriverHelper.scrollElementToView(sellAmountField);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(sellAmountField);
         return sellAmountField.getAttribute("value");
     }
 
     public String getSellCurrency() {
-        DriverHelper.waitForPageLoad();
+        DriverHelper.waitForPageJsLoad();
         DriverHelper.waitForElementVisibility(sellAmountCurrencyField);
-        DriverHelper.scrollElementToView(sellAmountCurrencyField);
         return sellAmountCurrencyField.getText();
     }
 
 
     public void clickOnBuyAmount() {
-        DriverHelper.waitForPageLoad();
-        DriverHelper.scrollElementToView(buyAmountField);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(buyAmountField);
         buyAmountField.click();
     }
 
     public void setBuyAmount(String amount) {
-        DriverHelper.scrollElementToView(buyAmountField);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(buyAmountField);
         buyAmountField.clear();
         buyAmountField.sendKeys(amount);
     }
 
     public String getBuyAmount() {
-        DriverHelper.waitForPageLoad();
-        DriverHelper.scrollElementToView(buyAmountField);
+        DriverHelper.waitForPageJsLoad();
+        DriverHelper.waitForElementVisibility(buyAmountField);
         return buyAmountField.getAttribute("value");
     }
 
     public void selectCountry(String countryName) {
-        DriverHelper.waitForPageLoad();
+        DriverHelper.waitForPageJsLoad();
         DriverHelper.scrollToBottom();
         selectCountryButton.click();
         DriverHelper.waitForElementVisibility(selectCountryDropdown);

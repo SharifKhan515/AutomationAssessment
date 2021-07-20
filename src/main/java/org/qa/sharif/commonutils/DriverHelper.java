@@ -10,12 +10,6 @@ import org.qa.sharif.driver.DriverProvider;
 
 public class DriverHelper {
 
-
-    public static void scrollElementToView(WebElement element) {
-        WebDriver driver = DriverProvider.getDriver();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-    }
-
     public static void scrollToBottom() {
         WebDriver driver = DriverProvider.getDriver();
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -24,13 +18,20 @@ public class DriverHelper {
     public static void waitForElementVisibility(WebElement element) {
         WebDriverWait wait = new WebDriverWait(DriverProvider.getDriver(), AppConfig.getDefaultElementTimeOut());
         wait.until(ExpectedConditions.visibilityOf(element));
+        WebDriver driver = DriverProvider.getDriver();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public static void waitForPageLoad() {
-        new WebDriverWait(DriverProvider.getDriver(), AppConfig.getDefaultPageTimeout()).until((ExpectedCondition<Boolean>) wd ->
-                ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+    public static void waitForPageJsLoad() {
+        WebDriverWait wait = new WebDriverWait(DriverProvider.getDriver(), AppConfig.getDefaultPageTimeout());
+        wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd).
+                executeScript("return document.readyState").equals("complete"));
     }
 
+    public static void waitForElementBecomeInvisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(DriverProvider.getDriver(), AppConfig.getDefaultElementTimeOut());
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
     public static void pageReload() {
         WebDriver driver = DriverProvider.getDriver();
         driver.navigate().refresh();
