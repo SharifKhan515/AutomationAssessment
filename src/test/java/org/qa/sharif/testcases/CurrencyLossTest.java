@@ -1,6 +1,5 @@
 package org.qa.sharif.testcases;
 
-
 import org.qa.sharif.dataproviders.ReadData;
 import org.qa.sharif.pageobjectrepisotory.CurrencyExchangeCalculatorPage;
 import org.qa.sharif.pageobjectrepisotory.CurrencyTable;
@@ -31,7 +30,9 @@ public class CurrencyLossTest extends BaseTestClass {
             compareCurrency = "EUR";
         }
         currencyExchangeCalculatorPage.setSellCurrency(currency);
+        reportLog("Currency set successfully :"+currency);
         currencyExchangeCalculatorPage.enterSellAmount(amount);
+        reportLog("Amount set successfully :"+amount);
 
         Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("SWEDBANK", compareCurrency)),
                 df.format(currencyTable.getOtherBankLoss("SWEDBANK", compareCurrency)),

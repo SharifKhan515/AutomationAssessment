@@ -4,6 +4,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.qa.sharif.commonutils.DriverHelper;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -74,7 +77,7 @@ public class CurrencyExchangeCalculatorPage extends BasePage {
     }
 
     public void enterSellAmount(String amount) {
-        setSellAmount(amount);
+        setSellAmount(amount.replace(",",""));
         sellAmountField.sendKeys(Keys.ENTER);
         DriverHelper.waitForElementVisibility(currencyExchangeTableLoader);
         DriverHelper.waitForElementBecomeInvisible(currencyExchangeTableLoader);

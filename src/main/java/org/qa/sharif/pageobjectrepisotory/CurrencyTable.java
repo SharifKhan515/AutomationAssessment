@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.qa.sharif.commonutils.DriverHelper;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
 
 public class CurrencyTable extends BasePage {
@@ -49,7 +52,12 @@ public class CurrencyTable extends BasePage {
         DriverHelper.waitForElementVisibility(currencyExchangeTableFirstRow);
         for (WebElement currencyRow : currencyTableRow) {
             if (currencyRow.getText().contains(currencyProvided)) {
-                amount = Float.parseFloat(currencyRow.findElement(companyAmountLocator).getText());
+                String amountString=currencyRow.findElement(companyAmountLocator).getText();
+                try {
+                    amount = NumberFormat.getInstance().parse(amountString).floatValue();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
         }
@@ -96,7 +104,12 @@ public class CurrencyTable extends BasePage {
         float amount = 0;
         for (WebElement currencyRow : currencyTableRow) {
             if (currencyRow.getText().contains(currencyProvided)) {
-                amount = Float.parseFloat(currencyRow.findElement(locator).findElement(otherbankAmountLocator).getText());
+                String amountString = currencyRow.findElement(locator).findElement(otherbankAmountLocator).getText();
+                try {
+                    amount = NumberFormat.getInstance().parse(amountString).floatValue();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
         }
@@ -110,7 +123,12 @@ public class CurrencyTable extends BasePage {
             if (currencyRow.getText().contains(currencyProvided)) {
                 if (currencyRow.findElement(locator).findElements(otherBankLossLocator).size() != 0) {
                     String lossString = currencyRow.findElement(locator).findElement(otherBankLossLocator).getText();
-                    loss = Float.parseFloat(StringUtils.substringBetween(lossString, "(", ")"));
+                    lossString = StringUtils.substringBetween(lossString, "(", ")");
+                    try {
+                        loss = NumberFormat.getInstance().parse(lossString).floatValue();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 break;

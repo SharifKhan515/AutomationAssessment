@@ -1,26 +1,42 @@
 package org.qa.sharif.reporter;
 
+import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class Listener {
+import java.io.IOException;
 
+public class Listener extends ReportManager implements ITestListener {
 
-   /* @Override
+    @Override
     public void onTestStart(ITestResult iTestResult) {
-        log("")
-
+        String methodName = iTestResult.getMethod().getMethodName();
+        Object[] parameters = iTestResult.getParameters();
+        test = report.createTest(methodName);
+        extentTest.set(test);
+        for(Object parameter: parameters ){
+            extentTest.get().log(Status.INFO,"Test data :"+parameter);
+        }
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
 
+        extentTest.get().log(Status.PASS,"Test Passed");
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
+        String methodName = iTestResult.getMethod().getMethodName();
+        try {
+            String screenShot = ScreenShotTaker.getScreenshot(methodName);
 
+            extentTest.get().addScreenCaptureFromPath(".\\screenshot" +screenShot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       extentTest.get().fail(iTestResult.getThrowable());
     }
 
     @Override
@@ -36,13 +52,12 @@ public class Listener {
     @Override
     public void onStart(ITestContext iTestContext) {
 
+             report = ExtentReporter.getReportObject();
+
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-
+       report.flush();
     }
-    private static String getTestMethodName(ITestResult iTestResult) {
-        return iTestResult.getMethod().getConstructorOrMethod().getName();
-    }*/
 }
