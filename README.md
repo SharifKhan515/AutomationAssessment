@@ -1,5 +1,5 @@
 # Automation Assessment
-This is an automation framework build from scratch using selenium-java as part of an automation assesment.
+This is an automation framework build from scratch using selenium-java.
 
 ## Language used: Java
 
@@ -13,17 +13,17 @@ This is an automation framework build from scratch using selenium-java as part o
 
 ## Steps to run the test
 1. Go to the root folder of the project.
-2. Run below maven command to run the test in chrome
-```
+2. Run the maven command given below to execute the test in chrome
+```python
 mvn clean verify -DsuiteFile=src/test/resources/testsuites/testng.xml -Dbrowser=chrome
 ```
-3. Run below command to run the test in firefox
-```
+3. Run the maven command given below to execute the test in firefox
+```python
 mvn clean verify -DsuiteFile=src/test/resources/testsuites/testng.xml -Dbrowser=firefox
 ```
 4. If ```-Dbrowser``` is not provided then test will run on chrome.
-5. To run the test from any directory run the below command
-```
+5. To run the test from any directory run the command given below
+```python
 mvn clean verify -DsuiteFile=absolutePathOfTestng.file -Dbrowser=driverOfChoose
 ```
 
