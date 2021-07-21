@@ -1,7 +1,6 @@
 package org.qa.sharif.commonutils;
 
 import org.qa.sharif.environment.Environment;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

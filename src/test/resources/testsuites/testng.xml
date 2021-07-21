@@ -15,7 +15,7 @@
         </classes>
     </test>
 
-    <test verbose="2" name="Currency exchange loss text present test">
+    <test verbose="2" name="Currency exchange loss text present">
         <classes>
             <class name="org.qa.sharif.testcases.CurrencyLossTest"/>
         </classes>

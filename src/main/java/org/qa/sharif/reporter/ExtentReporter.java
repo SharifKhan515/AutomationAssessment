@@ -14,7 +14,6 @@ public class ExtentReporter {
         if(extentReports==null) {
             return createReportObject();
         } else return extentReports;
-
     }
 
     public static ExtentReports createReportObject(){

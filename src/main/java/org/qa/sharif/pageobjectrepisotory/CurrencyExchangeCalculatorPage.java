@@ -4,9 +4,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.qa.sharif.commonutils.DriverHelper;
-
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.List;
 
 

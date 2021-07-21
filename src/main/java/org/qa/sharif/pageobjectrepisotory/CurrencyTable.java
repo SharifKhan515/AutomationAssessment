@@ -52,7 +52,7 @@ public class CurrencyTable extends BasePage {
         DriverHelper.waitForElementVisibility(currencyExchangeTableFirstRow);
         for (WebElement currencyRow : currencyTableRow) {
             if (currencyRow.getText().contains(currencyProvided)) {
-                String amountString=currencyRow.findElement(companyAmountLocator).getText();
+                String amountString = currencyRow.findElement(companyAmountLocator).getText();
                 try {
                     amount = NumberFormat.getInstance().parse(amountString).floatValue();
                 } catch (ParseException e) {
@@ -130,7 +130,6 @@ public class CurrencyTable extends BasePage {
                         e.printStackTrace();
                     }
                 }
-
                 break;
             }
         }

@@ -30,9 +30,9 @@ public class CurrencyLossTest extends BaseTestClass {
             compareCurrency = "EUR";
         }
         currencyExchangeCalculatorPage.setSellCurrency(currency);
-        reportLog("Currency set successfully :"+currency);
+        reportLog("Currency set successfully :" + currency);
         currencyExchangeCalculatorPage.enterSellAmount(amount);
-        reportLog("Amount set successfully :"+amount);
+        reportLog("Amount set successfully :" + amount);
 
         Assert.assertEquals(df.format(currencyTable.getOtherBankCalculatedLoss("SWEDBANK", compareCurrency)),
                 df.format(currencyTable.getOtherBankLoss("SWEDBANK", compareCurrency)),
@@ -55,6 +55,5 @@ public class CurrencyLossTest extends BaseTestClass {
         );
         softVerify.assertAll();
     }
-
 
 }

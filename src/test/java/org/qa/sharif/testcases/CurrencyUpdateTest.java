@@ -1,6 +1,5 @@
 package org.qa.sharif.testcases;
 
-import org.apache.logging.log4j.LogManager;
 import org.qa.sharif.dataproviders.CountryData;
 import org.qa.sharif.dataproviders.ReadData;
 import org.qa.sharif.pageobjectrepisotory.CurrencyExchangeCalculatorPage;
@@ -16,7 +15,6 @@ public class CurrencyUpdateTest extends BaseTestClass {
         currencyExchangeCalculatorPage = new CurrencyExchangeCalculatorPage();
         currencyTable = new CurrencyTable();
         softVerify = new SoftAssert();
-        //log= LogManager.getLogger(this.getClass().getName());
     }
 
     @Test(dataProvider = "CountryCurrencyUpdateTest", dataProviderClass = ReadData.class)

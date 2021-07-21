@@ -19,30 +19,27 @@ public class BaseTestClass extends ReportManager {
     public WebDriver driver;
     public CurrencyExchangeCalculatorPage currencyExchangeCalculatorPage;
     public CurrencyTable currencyTable;
-    public  SoftAssert softVerify;
-
+    public SoftAssert softVerify;
 
     @BeforeClass
     public void init() {
         driver = DriverProvider.getDriver();
         driver.get(baseUrl);
     }
-    @BeforeMethod
-    public void methodInit(Method m){
-        log= LogManager.getLogger(this.getClass().getName()+":"+m.getName());
-    }
 
+    @BeforeMethod
+    public void methodInit(Method m) {
+        log = LogManager.getLogger(this.getClass().getName() + ":" + m.getName());
+    }
 
     @AfterClass
     public void exit() {
         DriverProvider.quitDriver();
     }
 
-    public void reportLog(String message){
-
-        test.log(Status.INFO,message);
+    public void reportLog(String message) {
+        test.log(Status.INFO, message);
         log.info(message);
-
     }
 
 

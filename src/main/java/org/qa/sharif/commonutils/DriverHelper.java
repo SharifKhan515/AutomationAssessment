@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.qa.sharif.driver.DriverProvider;
 
 public class DriverHelper {
@@ -32,6 +33,7 @@ public class DriverHelper {
         WebDriverWait wait = new WebDriverWait(DriverProvider.getDriver(), AppConfig.getDefaultElementTimeOut());
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
+
     public static void pageReload() {
         WebDriver driver = DriverProvider.getDriver();
         driver.navigate().refresh();
