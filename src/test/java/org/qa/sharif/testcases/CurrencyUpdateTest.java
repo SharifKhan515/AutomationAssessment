@@ -23,22 +23,22 @@ public class CurrencyUpdateTest extends BaseTestClass {
         String firstCountryCurrency, secondCountryCurrency;
 
         currencyExchangeCalculatorPage.selectCountry(CountryData.valueOf(firstCountry).getCountryName());
-        reportLog("First country selected successfully from dropdown :"+firstCountry);
+        reportLog("First country selected successfully from dropdown :" + firstCountry);
         firstCountryCurrency = currencyExchangeCalculatorPage.getSellCurrency();
         softVerify.assertEquals(firstCountryCurrency, CountryData.valueOf(firstCountry).getCurrency());
-        reportLog("First Country Currency :"+CountryData.valueOf(firstCountry).getCurrency());
-        reportLog("Currency updated to after select first country  :"+firstCountryCurrency);
+        reportLog("First Country Currency :" + CountryData.valueOf(firstCountry).getCurrency());
+        reportLog("Currency updated to after select first country  :" + firstCountryCurrency);
         officialRateOfFirstCurrency = currencyTable.getOfficialExchangeRateByCurrency(CountryData.USA.getCurrency());
-        reportLog("Official rate of first Currency :"+officialRateOfFirstCurrency);
+        reportLog("Official rate of first Currency :" + officialRateOfFirstCurrency);
 
         currencyExchangeCalculatorPage.selectCountry(CountryData.valueOf(secondCountry).getCountryName());
-        reportLog("Second country selected successfully from dropdown :"+secondCountry);
-        secondCountryCurrency =currencyExchangeCalculatorPage.getSellCurrency();
+        reportLog("Second country selected successfully from dropdown :" + secondCountry);
+        secondCountryCurrency = currencyExchangeCalculatorPage.getSellCurrency();
         softVerify.assertEquals(secondCountryCurrency, CountryData.valueOf(secondCountry).getCurrency());
-        reportLog("Second Country Currency :"+CountryData.valueOf(secondCountry).getCurrency());
-        reportLog("Currency updated to after select second country  :"+secondCountryCurrency);
+        reportLog("Second Country Currency :" + CountryData.valueOf(secondCountry).getCurrency());
+        reportLog("Currency updated to after select second country  :" + secondCountryCurrency);
         officialRateOfSecondCurrency = currencyTable.getOfficialExchangeRateByCurrency(CountryData.USA.getCurrency());
-        reportLog("Official rate of second Currency :"+officialRateOfSecondCurrency);
+        reportLog("Official rate of second Currency :" + officialRateOfSecondCurrency);
 
         softVerify.assertNotEquals(officialRateOfFirstCurrency, officialRateOfSecondCurrency, "Currency rate not updated");
         softVerify.assertAll();

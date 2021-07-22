@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import org.qa.sharif.driver.DriverProvider;
+
 
 public class DriverHelper {
 
@@ -17,9 +17,9 @@ public class DriverHelper {
     }
 
     public static void waitForElementVisibility(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(DriverProvider.getDriver(), AppConfig.getDefaultElementTimeOut());
-        wait.until(ExpectedConditions.visibilityOf(element));
         WebDriver driver = DriverProvider.getDriver();
+        WebDriverWait wait = new WebDriverWait(driver, AppConfig.getDefaultElementTimeOut());
+        wait.until(ExpectedConditions.visibilityOf(element));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 

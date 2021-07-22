@@ -32,7 +32,7 @@ public class BaseTestClass extends ReportManager {
         log = LogManager.getLogger(this.getClass().getName() + ":" + m.getName());
     }
 
-    @AfterClass
+    @AfterSuite
     public void exit() {
         DriverProvider.quitDriver();
     }
