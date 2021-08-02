@@ -86,6 +86,7 @@ public class CurrencyExchangeCalculatorPage extends BasePage {
     }
 
     public String getSellCurrency() {
+
         DriverHelper.waitForElementVisibility(sellAmountCurrencyField);
         return sellAmountCurrencyField.getText();
     }
